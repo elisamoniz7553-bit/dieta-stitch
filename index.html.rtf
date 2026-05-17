@@ -1,0 +1,653 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleColorEmoji;\f2\fnil\fcharset0 LucidaGrande;
+}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="pt-BR">\
+<head>\
+  <meta charset="UTF-8" />\
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\
+  <title>Elisa Diet</title>\
+  <style>\
+    :root\{\
+      --bg1:#cfe9ff;\
+      --bg2:#ffffff;\
+      --card: rgba(255,255,255,.82);\
+      --card2: rgba(255,255,255,.92);\
+      --blue:#4b8fe8;\
+      --blue2:#7ab8ff;\
+      --pink:#ff8fb3;\
+      --green:#41b883;\
+      --text:#1f2a37;\
+      --muted:#6b7280;\
+      --shadow: 0 12px 30px rgba(76, 144, 255, .14);\
+      --radius: 28px;\
+    \}\
+\
+    *\{ box-sizing:border-box; \}\
+    body\{\
+      margin:0;\
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;\
+      color:var(--text);\
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));\
+      min-height:100vh;\
+    \}\
+\
+    .app\{\
+      max-width: 980px;\
+      margin: 0 auto;\
+      padding: 18px 14px 28px;\
+    \}\
+\
+    .topbar\{\
+      display:flex;\
+      align-items:center;\
+      justify-content:space-between;\
+      gap:12px;\
+      padding: 8px 4px 18px;\
+    \}\
+\
+    .brand\{\
+      display:flex;\
+      flex-direction:column;\
+      gap:2px;\
+    \}\
+\
+    .brand h1\{\
+      margin:0;\
+      font-size: 1.6rem;\
+      line-height: 1.1;\
+      letter-spacing:-0.02em;\
+    \}\
+\
+    .brand p\{\
+      margin:0;\
+      color:var(--muted);\
+      font-size:.95rem;\
+    \}\
+\
+    .pill\{\
+      padding:10px 14px;\
+      border-radius:999px;\
+      background: rgba(255,255,255,.72);\
+      box-shadow: var(--shadow);\
+      font-weight:600;\
+      font-size:.9rem;\
+      color:#335;\
+      display:flex;\
+      align-items:center;\
+      gap:8px;\
+    \}\
+\
+    .grid\{\
+      display:grid;\
+      grid-template-columns: 1.3fr .9fr;\
+      gap: 16px;\
+    \}\
+\
+    @media (max-width: 820px)\{\
+      .grid\{ grid-template-columns:1fr; \}\
+    \}\
+\
+    .card\{\
+      background: var(--card);\
+      border: 1px solid rgba(255,255,255,.7);\
+      border-radius: var(--radius);\
+      box-shadow: var(--shadow);\
+      overflow:hidden;\
+    \}\
+\
+    .hero\{\
+      padding: 18px;\
+      position:relative;\
+      min-height: 260px;\
+      background:\
+        radial-gradient(circle at top right, rgba(255,255,255,.92), rgba(255,255,255,.55) 45%, rgba(255,255,255,.15) 100%);\
+    \}\
+\
+    .hero-inner\{\
+      display:grid;\
+      grid-template-columns: 1fr 240px;\
+      gap:16px;\
+      align-items:center;\
+    \}\
+\
+    @media (max-width: 640px)\{\
+      .hero-inner\{ grid-template-columns:1fr; \}\
+    \}\
+\
+    .hero h2\{\
+      margin:0 0 8px;\
+      font-size: 1.75rem;\
+      letter-spacing:-0.03em;\
+    \}\
+\
+    .hero p\{\
+      margin:0 0 14px;\
+      color:var(--muted);\
+      line-height:1.5;\
+    \}\
+\
+    .tags\{\
+      display:flex;\
+      flex-wrap:wrap;\
+      gap:10px;\
+      margin-top:12px;\
+    \}\
+\
+    .tag\{\
+      background: rgba(75,143,232,.12);\
+      color:#285aa7;\
+      border: 1px solid rgba(75,143,232,.14);\
+      padding:8px 12px;\
+      border-radius:999px;\
+      font-size:.9rem;\
+      font-weight:600;\
+    \}\
+\
+    .artbox\{\
+      border-radius: 26px;\
+      background: linear-gradient(180deg, rgba(122,184,255,.32), rgba(255,255,255,.75));\
+      border: 1px dashed rgba(75,143,232,.25);\
+      min-height: 210px;\
+      display:flex;\
+      align-items:center;\
+      justify-content:center;\
+      text-align:center;\
+      padding: 16px;\
+      position:relative;\
+      overflow:hidden;\
+    \}\
+\
+    .artbox .emoji\{\
+      font-size: 4rem;\
+      margin-bottom: 6px;\
+      display:block;\
+    \}\
+\
+    .artbox strong\{\
+      display:block;\
+      font-size:1rem;\
+      margin-bottom:4px;\
+    \}\
+\
+    .artbox span\{\
+      color:var(--muted);\
+      font-size:.92rem;\
+    \}\
+\
+    .stats\{\
+      display:grid;\
+      grid-template-columns:1fr 1fr;\
+      gap:12px;\
+      padding: 16px;\
+    \}\
+\
+    .stat\{\
+      background: var(--card2);\
+      border-radius: 22px;\
+      padding: 16px;\
+      box-shadow: 0 8px 18px rgba(75, 143, 232, .08);\
+      border: 1px solid rgba(255,255,255,.65);\
+    \}\
+\
+    .stat .label\{\
+      color:var(--muted);\
+      font-size:.88rem;\
+      margin-bottom:6px;\
+    \}\
+\
+    .stat .value\{\
+      font-size:1.25rem;\
+      font-weight:800;\
+      letter-spacing:-0.02em;\
+    \}\
+\
+    .progress-wrap\{\
+      padding: 16px;\
+    \}\
+\
+    .progress-head\{\
+      display:flex;\
+      align-items:center;\
+      justify-content:space-between;\
+      margin-bottom:10px;\
+      gap:10px;\
+    \}\
+\
+    .progress-head h3\{\
+      margin:0;\
+      font-size:1.05rem;\
+    \}\
+\
+    .progress-head .pct\{\
+      font-weight:800;\
+      color:var(--blue);\
+    \}\
+\
+    .progressbar\{\
+      width:100%;\
+      height: 16px;\
+      background: rgba(75,143,232,.10);\
+      border-radius:999px;\
+      overflow:hidden;\
+      border: 1px solid rgba(75,143,232,.12);\
+    \}\
+\
+    .progressbar > div\{\
+      height:100%;\
+      width:0%;\
+      background: linear-gradient(90deg, var(--blue), var(--blue2));\
+      border-radius:999px;\
+      transition: width .35s ease;\
+    \}\
+\
+    .small\{\
+      margin-top:10px;\
+      color:var(--muted);\
+      font-size:.92rem;\
+      line-height:1.45;\
+    \}\
+\
+    .section\{\
+      margin-top:16px;\
+      padding: 18px;\
+    \}\
+\
+    .section h3\{\
+      margin:0 0 8px;\
+      font-size:1.2rem;\
+      letter-spacing:-0.02em;\
+    \}\
+\
+    .section p.desc\{\
+      margin:0 0 16px;\
+      color:var(--muted);\
+      line-height:1.5;\
+    \}\
+\
+    .mode-row\{\
+      display:flex;\
+      gap:12px;\
+      flex-wrap:wrap;\
+      margin: 12px 0 16px;\
+    \}\
+\
+    .toggle\{\
+      appearance:none;\
+      border:none;\
+      cursor:pointer;\
+      padding:12px 14px;\
+      border-radius:999px;\
+      background: rgba(255,255,255,.92);\
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);\
+      font-weight:700;\
+      color:#2b3a4e;\
+      transition: transform .15s ease, background .2s ease;\
+    \}\
+    .toggle:hover\{ transform: translateY(-1px); \}\
+    .toggle.active\{\
+      background: linear-gradient(90deg, rgba(75,143,232,.16), rgba(255,143,179,.16));\
+      color:#16365f;\
+      outline: 2px solid rgba(75,143,232,.14);\
+    \}\
+\
+    .meals\{\
+      display:grid;\
+      gap:12px;\
+    \}\
+\
+    .meal\{\
+      background: rgba(255,255,255,.9);\
+      border-radius: 24px;\
+      padding: 16px;\
+      border: 1px solid rgba(255,255,255,.8);\
+      box-shadow: 0 10px 24px rgba(75, 143, 232, .08);\
+      display:grid;\
+      grid-template-columns: 40px 1fr auto;\
+      gap: 14px;\
+      align-items:start;\
+    \}\
+\
+    @media (max-width: 560px)\{\
+      .meal\{\
+        grid-template-columns: 40px 1fr;\
+      \}\
+      .meal .time\{\
+        grid-column: 2;\
+      \}\
+    \}\
+\
+    .check\{\
+      width: 28px;\
+      height: 28px;\
+      border-radius: 50%;\
+      border: 2px solid rgba(75,143,232,.3);\
+      display:flex;\
+      align-items:center;\
+      justify-content:center;\
+      cursor:pointer;\
+      margin-top:2px;\
+      user-select:none;\
+      flex-shrink:0;\
+      background:#fff;\
+      transition: transform .12s ease, background .2s ease, border-color .2s ease;\
+    \}\
+\
+    .check:hover\{ transform: scale(1.03); \}\
+    .check.done\{\
+      background: linear-gradient(180deg, #43c38a, #2aa96f);\
+      border-color: #2aa96f;\
+      color:white;\
+    \}\
+\
+    .meal h4\{\
+      margin:0 0 4px;\
+      font-size:1.02rem;\
+    \}\
+\
+    .meal .time\{\
+      font-weight:800;\
+      color:var(--blue);\
+      font-size:.92rem;\
+      white-space:nowrap;\
+    \}\
+\
+    .meal .details\{\
+      margin:0;\
+      color:var(--muted);\
+      line-height:1.45;\
+      font-size:.95rem;\
+    \}\
+\
+    .meal.done\{\
+      background: linear-gradient(180deg, rgba(65,184,131,.12), rgba(255,255,255,.92));\
+      border-color: rgba(65,184,131,.18);\
+    \}\
+\
+    .footer\{\
+      margin-top:16px;\
+      padding: 18px;\
+      color:var(--muted);\
+      font-size:.92rem;\
+      line-height:1.5;\
+    \}\
+\
+    .legend\{\
+      display:flex;\
+      flex-wrap:wrap;\
+      gap:10px;\
+      margin-top: 10px;\
+    \}\
+\
+    .legend span\{\
+      padding:8px 12px;\
+      border-radius:999px;\
+      background: rgba(255,255,255,.75);\
+      font-weight:600;\
+      color:#364b63;\
+    \}\
+\
+    .hidden\{ display:none !important; \}\
+  </style>\
+</head>\
+<body>\
+  <div class="app">\
+    <div class="topbar">\
+      <div class="brand">\
+        <h1>Elisa Diet</h1>\
+        <p>Plano alimentar pessoal com check e progresso do dia</p>\
+      </div>\
+      <div class="pill">
+\f1 \uc0\u55357 \u56473 
+\f0  App privado</div>\
+    </div>\
+\
+    <div class="grid">\
+      <div class="card hero">\
+        <div class="hero-inner">\
+          <div>\
+            <h2>Ol\'e1, Elisa 
+\f1 \uc0\u10024 
+\f0 </h2>\
+            <p>Marque cada refei\'e7\'e3o quando comer e acompanhe o progresso do dia em tempo real.</p>\
+            <div class="tags">\
+              <span class="tag">Fofo</span>\
+              <span class="tag">Suave</span>\
+              <span class="tag">Pessoal</span>\
+              <span class="tag">Privado</span>\
+            </div>\
+          </div>\
+\
+          <div class="artbox">\
+            <div>\
+              <span class="emoji">
+\f1 \uc0\u55356 \u57146 \u55356 \u57098 
+\f0 </span>\
+              <strong>Espa\'e7o da arte</strong>\
+              <span>Coloque aqui a imagem dos dois personagens juntos.</span>\
+            </div>\
+          </div>\
+        </div>\
+      </div>\
+\
+      <div class="card">\
+        <div class="stats">\
+          <div class="stat">\
+            <div class="label">Refei\'e7\'f5es feitas</div>\
+            <div class="value" id="doneCount">0/0</div>\
+          </div>\
+          <div class="stat">\
+            <div class="label">Tipo de dia</div>\
+            <div class="value" id="dayTypeLabel">Dia de trabalho</div>\
+          </div>\
+        </div>\
+\
+        <div class="progress-wrap">\
+          <div class="progress-head">\
+            <h3>Progresso do dia</h3>\
+            <div class="pct" id="progressPct">0%</div>\
+          </div>\
+          <div class="progressbar"><div id="progressFill"></div></div>\
+          <div class="small">Cada check aumenta o progresso. Tudo fica salvo automaticamente neste navegador.</div>\
+        </div>\
+      </div>\
+    </div>\
+\
+    <div class="card section">\
+      <h3>Dia</h3>\
+      <p class="desc">Escolha o tipo de dia para carregar os hor\'e1rios corretos da dieta da Elisa.</p>\
+\
+      <div class="mode-row">\
+        <button class="toggle active" id="workBtn">Dia de trabalho</button>\
+        <button class="toggle" id="offBtn">Dia de folga</button>\
+      </div>\
+\
+      <div class="meals" id="meals"></div>\
+    </div>\
+\
+    <div class="card footer">\
+      <strong>Lembretes por hor\'e1rio:</strong> este HTML mostra o plano e o progresso, mas notifica\'e7\'f5es reais e recorrentes funcionam melhor em app iOS nativo. Se depois voc\'ea quiser, eu transformo isso em SwiftUI com notifica\'e7\'f5es locais.\
+      <div class="legend">\
+        <span>07:30 / 08:00</span>\
+        <span>11:00 / 10:30</span>\
+        <span>12:50 / 13:00</span>\
+        <span>16:30 / 16:00</span>\
+        <span>19:00 / 19:30</span>\
+      </div>\
+    </div>\
+  </div>\
+\
+  <script>\
+    const mealPlans = \{\
+      work: [\
+        \{\
+          id: "work_breakfast",\
+          title: "Lanche da manh\'e3",\
+          time: "07:30",\
+          details: "Caf\'e9 com pouco ado\'e7ante, 2 ovos mexidos ou cozidos, 1 fatia fina de queijo, 1 banana com chia ou panqueca de banana."\
+        \},\
+        \{\
+          id: "work_snack",\
+          title: "Cola\'e7\'e3o",\
+          time: "11:00",\
+          details: "4 castanhas de caju sem sal ou mixed nuts + 1 por\'e7\'e3o de fruta."\
+        \},\
+        \{\
+          id: "work_lunch",\
+          title: "Almo\'e7o",\
+          time: "12:50",\
+          details: "1 medida de whey com leite de am\'eandoas ou leite de coco. Se quiser vitamina, adicionar 2 colheres de sopa de abacate."\
+        \},\
+        \{\
+          id: "work_afternoon",\
+          title: "Lanche da tarde",\
+          time: "16:30",\
+          details: "Salada de alface e tomate, frango grelhado, arroz e feij\'e3o. Ou sandu\'edche de pat\'ea de frango."\
+        \},\
+        \{\
+          id: "work_dinner",\
+          title: "Jantar",\
+          time: "19:00",\
+          details: "Omelete com ovos, queijo e tomate, ou salada com frango e arroz, ou whey com leite vegetal."\
+        \}\
+      ],\
+      off: [\
+        \{\
+          id: "off_breakfast",\
+          title: "Lanche da manh\'e3",\
+          time: "08:00",\
+          details: "Caf\'e9 com pouco ado\'e7ante, p\'e3o integral ou bagel pequeno, 2 ovos e creme de ricota, ou panqueca de banana."\
+        \},\
+        \{\
+          id: "off_snack",\
+          title: "Cola\'e7\'e3o",\
+          time: "10:30",\
+          details: "4 castanhas de caju sem sal ou mixed nuts + 1 por\'e7\'e3o de fruta."\
+        \},\
+        \{\
+          id: "off_lunch",\
+          title: "Almo\'e7o",\
+          time: "13:00",\
+          details: "Vegetais variados, frango grelhado, arroz ou batata cozida e feij\'e3o, se poss\'edvel."\
+        \},\
+        \{\
+          id: "off_afternoon",\
+          title: "Lanche da tarde",\
+          time: "16:00",\
+          details: "Vitamina proteica com whey, leite vegetal, abacate e chia."\
+        \},\
+        \{\
+          id: "off_dinner",\
+          title: "Jantar",\
+          time: "19:30",\
+          details: "Vegetais variados, frango grelhado e arroz ou batata cozida."\
+        \}\
+      ]\
+    \};\
+\
+    let currentMode = localStorage.getItem("elisa_mode") || "work";\
+\
+    const mealsEl = document.getElementById("meals");\
+    const progressFill = document.getElementById("progressFill");\
+    const progressPct = document.getElementById("progressPct");\
+    const doneCount = document.getElementById("doneCount");\
+    const dayTypeLabel = document.getElementById("dayTypeLabel");\
+    const workBtn = document.getElementById("workBtn");\
+    const offBtn = document.getElementById("offBtn");\
+\
+    function keyFor(mealId)\{\
+      return `elisa_$\{currentMode\}_$\{mealId\}`;\
+    \}\
+\
+    function isChecked(mealId)\{\
+      return localStorage.getItem(keyFor(mealId)) === "1";\
+    \}\
+\
+    function setChecked(mealId, value)\{\
+      localStorage.setItem(keyFor(mealId), value ? "1" : "0");\
+    \}\
+\
+    function renderModeButtons()\{\
+      workBtn.classList.toggle("active", currentMode === "work");\
+      offBtn.classList.toggle("active", currentMode === "off");\
+      dayTypeLabel.textContent = currentMode === "work" ? "Dia de trabalho" : "Dia de folga";\
+      localStorage.setItem("elisa_mode", currentMode);\
+    \}\
+\
+    function renderMeals()\{\
+      const meals = mealPlans[currentMode];\
+      mealsEl.innerHTML = "";\
+\
+      meals.forEach(meal => \{\
+        const checked = isChecked(meal.id);\
+\
+        const card = document.createElement("div");\
+        card.className = `meal $\{checked ? "done" : ""\}`;\
+        card.dataset.id = meal.id;\
+\
+        card.innerHTML = `\
+          <div class="check $\{checked ? "done" : ""\}" aria-label="marcar refei\'e7\'e3o">\
+            $\{checked ? "
+\f2 \uc0\u10003 
+\f0 " : ""\}\
+          </div>\
+          <div>\
+            <h4>$\{meal.title\}</h4>\
+            <p class="details">$\{meal.details\}</p>\
+          </div>\
+          <div class="time">$\{meal.time\}</div>\
+        `;\
+\
+        const check = card.querySelector(".check");\
+        check.addEventListener("click", () => \{\
+          const next = !isChecked(meal.id);\
+          setChecked(meal.id, next);\
+          renderMeals();\
+          updateProgress();\
+        \});\
+\
+        card.addEventListener("click", (e) => \{\
+          if (!e.target.classList.contains("check")) \{\
+            const next = !isChecked(meal.id);\
+            setChecked(meal.id, next);\
+            renderMeals();\
+            updateProgress();\
+          \}\
+        \});\
+\
+        mealsEl.appendChild(card);\
+      \});\
+    \}\
+\
+    function updateProgress()\{\
+      const meals = mealPlans[currentMode];\
+      const total = meals.length;\
+      const done = meals.filter(m => isChecked(m.id)).length;\
+      const pct = total ? Math.round((done / total) * 100) : 0;\
+\
+      progressFill.style.width = `$\{pct\}%`;\
+      progressPct.textContent = `$\{pct\}%`;\
+      doneCount.textContent = `$\{done\}/$\{total\}`;\
+    \}\
+\
+    function switchMode(mode)\{\
+      currentMode = mode;\
+      renderModeButtons();\
+      renderMeals();\
+      updateProgress();\
+    \}\
+\
+    workBtn.addEventListener("click", () => switchMode("work"));\
+    offBtn.addEventListener("click", () => switchMode("off"));\
+\
+    renderModeButtons();\
+    renderMeals();\
+    updateProgress();\
+  </script>\
+</body>\
+</html>}
