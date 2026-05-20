@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Playbook 30 Dias – Não se abandonar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #34495e;
+      --accent: #8e44ad;
+      --accent-light: #b39ddb;
+      --bg: #f1f5f9;
+      --text: #2d3748;
+      --card-bg: #ffffff;
+      --border: #dce6ee;
+      --danger: #c53030;
+      --success: #48bb78;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    main {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 100vh;
+    }
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        display: none;
+      }
+    }
+    nav {
+      background-color: var(--primary);
+      color: white;
+      padding: 1.5rem 1.2rem 1.5rem 1.5rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    }
+    nav h2 {
+      font-size: 1rem;
+      margin: 0 0 1rem 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    nav a {
+      display: block;
+      padding: 0.6rem 0.8rem;
+      text-decoration: none;
+      color: rgba(255,255,255,0.9);
+      border-radius: 4px;
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+    nav a:hover, nav a.active {
+      background-color: rgba(255,255,255,0.15);
+      color: white;
+    }
+    .container {
+      max-width: 1100px;
+      padding: 2rem;
+      margin: 0 auto;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 2.5rem 0;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.9rem;
+    }
+    header p {
+      margin: 0.8rem 0 0 0;
+      opacity: 0.9;
+      font-size: 1rem;
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    section h2 {
+      color: var(--secondary);
+      border-bottom: 2px solid var(--accent-light);
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.4rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+      padding: 1.5rem 1.8rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: var(--secondary);
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+    }
+    .card ul {
+      padding-left: 1.8rem;
+      margin: 0.8rem 0;
+    }
+    .card p + ul,
+    .card h3 + p {
+      margin-top: 0.8rem;
+    }
+    .highlight {
+      background: linear-gradient(0deg, rgba(197, 227, 255, 0.2) 0%, rgba(197, 227, 255, 0.15) 100%);
+      border-left: 5px solid var(--accent);
+      padding: 1rem 1.4rem;
+      margin: 1.5rem 0;
+      border-radius: 6px;
+    }
+    .meta {
+      font-size: 0.9rem;
+      color: #666;
+      margin: 0.3rem 0;
+    }
+
+    /* Tabela de 30 dias */
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 1.5rem 0;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 1rem 0.8rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    thead th {
+      background: linear-gradient(135deg, var(--accent) 0%, #6a3aa2 100%);
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+    tbody tr:nth-child(odd) {
+      background-color: #fcfdff;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #f7fafc;
+    }
+    tbody tr:hover {
+      background-color: #eef2ff;
+      box-shadow: 0 3px 8px rgba(142,68,173,0.2);
+    }
+    .type {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 16px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: white;
+    }
+    .type--reflexao {
+      background-color: var(--accent-light);
+    }
+    .type--roteiro {
+      background-color: var(--success);
+    }
+    .type--motivacional {
+      background-color: #fbbf24;
+    }
+    .type--trend {
+      background-color: #ec4899;
+    }
+    .type--livre {
+      background-color: #4b5563;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #666;
+      font-size: 0.9rem;
+      padding: 1.5rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <nav>
+      <h2>Menu</h2>
+      <ul>
+        <li><a href="#tese">1. Tese do projeto</a></li>
+        <li><a href="#personagem">2. Personagem</a></li>
+        <li><a href="#pilares">3. Pilares</a></li>
+        <li><a href="#roteiros">4. Roteiros 30s</a></li>
+        <li><a href="#calendario">5. Calendário 30 dias</a></li>
+        <li><a href="#metricas">6. Métricas</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+
+      <header>
+        <h1>Playbook 30 Dias – Não se abandonar</h1>
+        <p>Projeto de um homem de 24 anos com depressão, ansiedade e saúde mental debilitada que decide não se abandonar. 30 dias de conteúdo para TikTok e Instagram.</p>
+      </header>
+
+      <section id="tese">
+        <h2>1. Tese do projeto</h2>
+        <div class="card highlight">
+          <p><strong>Nome do projeto:</strong> Não se abandonar</p>
+          <p><strong>Tese:</strong> 
+            Um homem de 24 anos com depressão, ansiedade e saúde mental debilitada começa a aprender a não se abandonar, escolhendo continuar vivendo, mesmo quando não se sente capaz. O grande salto não é ficar feliz todo dia, e sim parar de se tratar como um peso que deveria ser descartado.</p>
+        </div>
+      </section>
+
+      <section id="personagem">
+        <h2>2. Personagem principal</h2>
+        <div class="card">
+          <p><strong>Idade:</strong> 24 anos.</p>
+          <p><strong>Perfil:</strong></p>
+          <ul>
+            <li>Trabalha (ou tenta trabalhar) à exaustão.</li>
+            <li>Vive com pouco dinheiro e muita pressão.</li>
+            <li>Sente que a vida passou rápido, mas não colheu o que queria.</li>
+            <li>Tem depressão, ansiedade, ataques de pânico, noites de insônia, culpa e medo.</li>
+          </ul>
+          <p><strong>Virada:</strong> ele percebe que está se abandonando e decide que, a partir de agora, não vai mais fazer isso.</p>
+        </div>
+      </section>
+
+      <section id="pilares">
+        <h2>3. Pilares de conteúdo</h2>
+        <div class="card highlight">
+          <p><strong>Dor vista com dignidade:</strong> falar de cansaço, culpa, revolta, depressão sem romantizar.</p>
+          <p><strong>Força silenciosa:</strong> valorizar o fato de continuar, mesmo sem aplauso.</p>
+          <p><strong>Realidade bruta:</strong> falar de dinheiro, trabalho, saúde mental sem clichê.</p>
+          <p><strong>Esperança sem ilusão:</strong> motivação que reconhece o peso, mas oferece passo pequeno.</p>
+        </div>
+      </section>
+
+      <section id="roteiros">
+        <h2>4. 10 roteiros curtos (30s)</h2>
+
+        <div class="card">
+          <h3>1. O adulto que só aguenta</h3>
+          <p class="meta">Cenário: despertando, olhando celulares cheio de notificações de boleto.</p>
+          <p><strong>Gancho (0–3s):</strong> “Hoje eu não acordo mais pra sonhar, eu acordo pra pagar boleto.”</p>
+          <p><strong>Desenrolar:</strong> “Às vezes me olho no espelho e vejo a cara de alguém que só está aqui por obrigação… mas ainda tem um pedacinho de mim que não desistiu.”</p>
+          <p><strong>Fechamento:</strong> “Se você só conseguiu sobreviver até agora, isso já conta.”</p>
+        </div>
+
+        <div class="card">
+          <h3>2. A dor de trabalhar e não se sentir à vontade</h3>
+          <p class="meta">Cenário: ônibus/metrô, cansaço profundo.</p>
+          <p><strong>Gancho:</strong> “Tem dias que eu trabalho 8 horas e saio cansado, mas sem sentir que produzi nada de verdade pra mim.”</p>
+          <p><strong>Desenrolar:</strong> “Só estou ali porque preciso sobreviver, não porque eu acredito naquilo… mas ainda tento achar um sentido pequeno nesse cansaço.”</p>
+          <p><strong>Fechamento:</strong> “Se você também se sente assim, comenta ‘também me sinto assim’.”</p>
+        </div>
+
+        <div class="card">
+          <h3>3. A depressão não é preguiça</h3>
+          <p class="meta">Cenário: deitado, sem forças.</p>
+          <p><strong>Gancho:</strong> “Muita gente confunde depressão com preguiça, mas essas duas coisas não são iguais.”</p>
+          <p><strong>Desenrolar:</strong> “Tem dia que o corpo tá cansado, a mente tá pesada, e o cobertor parece mais acolhedor do que qualquer plano… mas ainda existe um pedacinho de vontade.”</p>
+          <p><strong>Fechamento:</strong> “Se você também se sente assim, comenta ‘eu também me sinto assim’.”</p>
+        </div>
+
+        <div class="card">
+          <h3>4. O dia que você vê a vida passar</h3>
+          <p class="meta">Cenário: arrumando o quarto, encontrando um vídeo antigo.</p>
+          <p><strong>Gancho:</strong> “Eu tava arrumando o quarto e caiu um vídeo de 10 anos atrás… e eu percebi que a minha vida mudou, mas eu não senti.”</p>
+          <p><strong>Desenrolar:</strong> “Parece que eu só passei por tudo: trabalho, amigos, crises… e hoje me pego pensando: ‘será que eu tô vivendo, ou só sobrevivendo?’.”</p>
+          <p><strong>Fechamento:</strong> “Se você também se sente assim, comenta ‘também’.”</p>
+        </div>
+
+        <div class="card">
+          <h3>5. A revolta do brasileiro que trabalha muito</h3>
+          <p class="meta">Cenário: fim de semana, olhando o extrato.</p>
+          <p><strong>Gancho:</strong> “Eu trabalho demais pra ter tão pouco, e isso não é só falta de sorte, é injustiça.”</p>
+          <p><strong>Desenrolar:</strong> “Tem revolta justa aí, porque eu faço meu papel todos os dias… e ainda sinto essa dor no bolso e no peito.”</p>
+          <p><strong>Fechamento:</strong> “Se você também se sente explorado, comenta ‘também me sinto assim’.”</p>
+        </div>
+
+        <div class="card">
+          <h3>6. A dor de se sentir invisível</h3>
+          <p class="meta">Cenário: rua, bar, praça, com música ao fundo.</p>
+          <p><strong>Gancho:</strong> “Às vezes eu me sinto invisível, como se minhas batalhas não fossem importantes o suficiente.”</p>
+          <p><strong>Desenrolar:</strong> “Eu tô aqui, com minhas contas, minhas crises, meu cansaço… e, mesmo que ninguém veja, eu preciso reconhecer que isso pesa.”</p>
+          <p><strong>Fechamento:</strong> “Se você também se sente assim, comenta ‘estou aqui’.”</p>
+        </div>
+
+        <div class="card">
+          <h3>7. O dia que você quase desistiu</h3>
+          <p class="meta">Cenário: sentado, olhar vazio, sem chão.</p>
+          <p><strong>Gancho:</strong> “Ontem eu tive um daqueles dias que quase não aguentei.”</p>
+          <p><strong>Desenrolar:</strong> “Tudo pesava junto: cabeça confusa, corpo cansado, futuro nebuloso… e, naquele momento, eu pensei em desistir.”</p>
+          <p><strong>Fechamento:</strong> “Se você também já esteve ali, comenta ‘eu quase desisti’.”</p>
+        </div>
+
+        <div class="card">
+          <h3>8. O brasileiro que só aprendeu a aguentar</h3>
+          <p class="meta">Cenário: noite sem sono, pensando.</p>
+          <p><strong>Gancho:</strong> “O brasileiro comum não é forte, ele é treinado pra aguentar.”</p>
+          <p><strong>Desenrolar:</strong> “Nós aprendemos desde cedo a rachar o bife em 4, a sorir mesmo cansado, e a dizer ‘tudo bem’ quando nada está bem.”</p>
+          <p><strong>Fechamento:</strong> “Se você também só aprendeu a aguentar, comenta ‘cansei’.”</p>
+        </div>
+
+        <div class="card">
+          <h3>9. A solidão em meio à multidão</h3>
+          <p class="meta">Cenário: bar/praça, com gente.</p>
+          <p><strong>Gancho:</strong> “É engraçado, eu tô cercado de gente, mas me sinto sozinho.”</p>
+          <p><strong>Desenrolar:</strong> “Tanta gente conversando sobre qualquer coisa, mas ninguém fala da parte que dói… do aperto que você sente no peito mesmo com o som alto.”</p>
+          <p><strong>Fechamento:</strong> “Se você também se sente assim, comenta ‘sozinho no meio de todo mundo’.”</p>
+        </div>
+
+        <div class="card">
+          <h3>10. A esperança que não é bobagem</h3>
+          <p class="meta">Cenário: janela, olhando pra fora.</p>
+          <p><strong>Gancho:</strong> “Tem gente que acha que esperança é bobeira… mas eu acho que é o que me mantém de pé.”</p>
+          <p><strong>Desenrolar:</strong> “Eu não tô acreditando em milagre, tô acreditando em pequeno passo, em tentar de novo, em levantar da cama mesmo sem certeza.”</p>
+          <p><strong>Fechamento:</strong> “Se você ainda tá tentando, comenta ‘eu não desisti’.”</p>
+        </div>
+      </section>
+
+      <section id="calendario">
+        <h2>5. Calendário 30 dias de postagens</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Dia</th>
+              <th>Dia da semana</th>
+              <th>Tema</th>
+              <th>Tipo de vídeo</th>
+              <th>Roteiro / Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Segunda</td>
+              <td>Apresentação do personagem</td>
+              <td><span class="type type--reflexao">Reflexão</span></td>
+              <td>Apresente quem você é, com 24 anos, cansado, mas decidindo não se abandonar. Fale de forma humana e direta.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Terça</td>
+              <td>Dor de trabalhar e não se sentir à vontade</td>
+              <td><span class="type type--roteiro">Roteiro 2</span></td>
+              <td>Use o roteiro 2 integralmente ou adapte ao seu dia.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Quarta</td>
+              <td>A depressão não é preguiça</td>
+              <td><span class="type type--roteiro">Roteiro 3</span></td>
+              <td>Use o roteiro 3.</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Quinta</td>
+              <td>A revolta do brasileiro que trabalha muito</td>
+              <td><span class="type type--roteiro">Roteiro 5</span></td>
+              <td>Use o roteiro 5.</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Sexta</td>
+              <td>A dor de se sentir invisível</td>
+              <td><span class="type type--roteiro">Roteiro 6</span></td>
+              <td>Use o roteiro 6.</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Sábado</td>
+              <td>A solidão em meio à multidão</td>
+              <td><span class="type type--roteiro">Roteiro 9</span></td>
+              <td>Use o roteiro 9.</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Domingo</td>
+              <td>Reflexão sobre a primeira semana</td>
+              <td><span class="type type--reflexao">Reflexão</span></td>
+              <td>Resuma o que você percebeu em você e no público. Fale com tom de gratidão.</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Segunda</td>
+              <td>O dia que você vê a vida passar</td>
+              <td><span class="type type--roteiro">Roteiro 4</span></td>
+              <td>Use o roteiro 4.</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Terça</td>
+              <td>Esperança que não é bobagem</td>
+              <td><span class="type type--roteiro">Roteiro 10</span></td>
+              <td>Use o roteiro 10.</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Quarta</td>
+              <td>O dia que você quase desistiu</td>
+              <td><span class="type type--roteiro">Roteiro 7</span></td>
+              <td>Use o roteiro 7.</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>Quinta</td>
+              <td>Decisão de não se abandonar</td>
+              <td><span class="type type--motivacional">Motivação</span></td>
+              <td>Fale de forma simples: “Hoje decidi que não vou mais me abandonar.”</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>Sexta</td>
+              <td>O brasileiro que só aprendeu a aguentar</td>
+              <td><span class="type type--roteiro">Roteiro 8</span></td>
+              <td>Use o roteiro 8.</td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>Sábado</td>
+              <td>Bastidores de um dia difícil</td>
+              <td><span class="type type--reflexao">Reflexão</span></td>
+              <td>Mostre um dia ruim real, sem glamour.</td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>Domingo</td>
+              <td>Força silenciosa: seguir em frente</td>
+              <td><span class="type type--motivacional">Motivação</span></td>
+              <td>“Recado para quem segue em frente sem aplauso.”</td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>Segunda</td>
+              <td>Roteiro 1 – Adulto que só aguenta</td>
+              <td><span class="type type--roteiro">Roteiro 1</span></td>
+              <td>Use o roteiro 1.</td>
+            </tr>
+            <tr>
+              <td>16</td>
+              <td>Terça</td>
+              <td>Luto de quem não se reconhece mais na vida</td>
+              <td><span class="type type--reflexao">Reflexão</span></td>
+              <td>Explore a tristeza de não se encontrar nas próprias memórias.</td>
+            </tr>
+            <tr>
+              <td>17</td>
+              <td>Quarta</td>
+              <td>O que muda quando você decide não se abandonar</td>
+              <td><span class="type type--reflexao">Reflexão</span></td>
+              <td>Mostre pequenas mudanças de rotina, atenção e olhar.</td>
+            </tr>
+            <tr>
+              <td>18</td>
+              <td>Quinta</td>
+              <td>Trend adaptada ao seu nicho</td>
+              <td><span class="type type--trend">Trend</span></td>
+              <td>Adapte algum vídeo em alta ao seu tema (ex.: “será que só eu sinto isso?” aplicado à saúde mental).</td>
+            </tr>
+            <tr>
+              <td>19</td>
+              <td>Sexta</td>
+              <td>Roteiro 2 (reprise com novo ângulo)</td>
+              <td><span class="type type--roteiro">Roteiro 2</span></td>
+              <td>Repita com uma nova leitura.</td>
+            </tr>
+            <tr>
+              <td>20</td>
+              <td>Sábado</td>
+              <td>Reflexão livre</td>
+              <td><span class="type type--reflexao">Reflexão</span></td>
+              <td>Fale sobre ser o “mais forte” da família, mas se sentir fraco.</td>
+            </tr>
+            <tr>
+              <td>21</td>
+              <td>Domingo</td>
+              <td>Meio de caminho: como você se sente?</td>
+              <td><span class="type type--reflexao">Q&A</span></td>
+              <td>Pergunte ao público o que eles aprenderam sobre si.</td>
+            </tr>
+            <tr>
+              <td>22</td>
+              <td>Segunda</td>
+              <td>Depressão e ansiedade na rotina</td>
+              <td><span class="type type--reflexao">Reflexão</span></td>
+              <td>Explique sem jargões, de forma humana.</td>
+            </tr>
+            <tr>
+              <td>23</td>
+              <td>Terça</td>
+              <td>Força em pedir ajuda</td>
+              <td><span class="type type--motivacional">Motivação</span></td>
+              <td>“Pedir ajuda não é fraqueza, é respeito por si.”</td>
+            </tr>
+            <tr>
+              <td>24</td>
+              <td>Quarta</td>
+              <td>Ansiedade frente ao futuro</td>
+              <td><span class="type type--reflexao">Reflexão</span></td>
+              <td>Fale sobre medo de planejar algo que pode não dar certo.</td>
+            </tr>
+            <tr>
+              <td>25</td>
+              <td>Quinta</td>
+              <td>Story de alguém que você conhece</td>
+              <td><span class="type type--reflexao">Storytime</span></td>
+              <td>Conte uma história real de outra pessoa (sem identificar).</td>
+            </tr>
+            <tr>
+              <td>26</td>
+              <td>Sexta</td>
+              <td>Quando você volta atrás, mas não se abandona</td>
+              <td><span class="type type--reflexao">Reflexão</span></td>
+              <td>Fale de um dia que caiu, mas não desistiu de você.</td>
+            </tr>
+            <tr>
+              <td>27</td>
+              <td>Sábado</td>
+              <td>Pequeno passo que você pode dar hoje</td>
+              <td><span class="type type--motivacional">Motivação</span></td>
+              <td>Proponha um micro‑hábito (ex.: 5 minutos de caminhada, escrever 3 coisas que você sente).</td>
+            </tr>
+            <tr>
+              <td>28</td>
+              <td>Domingo</td>
+              <td>Fechamento do tema “esperança”</td>
+              <td><span class="type type--roteiro">Roteiro 10</span></td>
+              <td>Use uma versão de encerramento do roteiro 10.</td>
+            </tr>
+            <tr>
+              <td>29</td>
+              <td>Segunda</td>
+              <td>Resumo de tudo o que você aprendeu</td>
+              <td><span class="type type--reflexao">Reflexão</span></td>
+              <td>Resuma o caminho do personagem.</td>
+            </tr>
+            <tr>
+              <td>30</td>
+              <td>Terça</td>
+              <td>Fechamento do projeto</td>
+              <td><span class="type type--motivacional">Mensagem</span></td>
+              <td>“Obrigado por não deixar ninguém se abandonar sozinho nesse caminho.”</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="metricas">
+        <h2>6. Métricas de desempenho</h2>
+        <div class="card highlight">
+          <p>Monitore por vídeo:</p>
+          <ul>
+            <li>Retenção nos primeiros 3 segundos.</li>
+            <li>Tempo médio de visualização.</li>
+            <li>Quantidade de comentários e CTAs respondidos.</li>
+            <li>Compartilhamentos e mensagens diretas com “isso é meu dia”.</li>
+            <li>Sentimento geral dos comentários (se predominam reconhecimento e acolhimento).</li>
+          </ul>
+          <p>Use essa página como seu guia diário: abra o dia, veja o tema e o roteiro e poste.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Playbook 30 Dias – Não se abandonar, criado em 2026 para crescimento orgânico em TikTok e Instagram.</p>
+  </footer>
+
+</body>
+</html>
